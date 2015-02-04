@@ -9,5 +9,6 @@
 #ifndef rottentomatoes_objc_bridging_header_h
 #define rottentomatoes_objc_bridging_header_h
 
+#import <AFNetworking/AFNetworking.h>
 
 #endif
