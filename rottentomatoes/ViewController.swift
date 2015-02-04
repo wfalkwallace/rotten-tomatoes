@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Did tap \(indexPath.row)")
+        println("Did tap row: \(indexPath.row)")
     }
 }
 

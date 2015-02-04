@@ -24,6 +24,7 @@
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="zdf-2o-rjB"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vOE-En-DI5"/>
                                 </connections>
                             </tableView>
                         </subviews>
