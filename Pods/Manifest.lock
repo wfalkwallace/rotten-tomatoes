@@ -20,11 +20,41 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - MRProgress (0.8.1):
+    - MRProgress/ActivityIndicator (= 0.8.1)
+    - MRProgress/Blur (= 0.8.1)
+    - MRProgress/Circular (= 0.8.1)
+    - MRProgress/Icons (= 0.8.1)
+    - MRProgress/NavigationBarProgress (= 0.8.1)
+    - MRProgress/Overlay (= 0.8.1)
+  - MRProgress/ActivityIndicator (0.8.1):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.1):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.1):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.1)
+  - MRProgress/Icons (0.8.1)
+  - MRProgress/NavigationBarProgress (0.8.1):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.1):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.1)
+  - MRProgress/Stopable (0.8.1):
+    - MRProgress/Helper
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
+  - MRProgress (~> 0.8.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  MRProgress: cd12726e001ea25dec133322d34cc4754cbc58f8
 
 COCOAPODS: 0.35.0
