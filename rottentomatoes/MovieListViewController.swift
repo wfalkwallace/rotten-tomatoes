@@ -33,12 +33,14 @@ class MovieListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.movies.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.moviecell") as UITableViewCell
-        cell.textLabel?.text = "Row: \(indexPath.row)"
+        let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell 
+        cell.movieTitleLabel.text = self.movies[indexPath.row]["title"] as String
+        let thumbnailURLString = (self.movies[indexPath.row]["posters"] as NSDictionary)["thumbnail"] as String
+        cell.movieThumbnailImageView.setImageWithURL(NSURL(string: thumbnailURLString))
         return cell
     }
     
