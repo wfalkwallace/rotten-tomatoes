@@ -15,7 +15,7 @@ class MovieListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ApiKey = "6t24p36sagyc9xm6mt6ez6xf"
+        let ApiKey = ""
         let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(ApiKey)"
         let request = NSURLRequest(URL: NSURL(string: RottenTomatoesURLString)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
