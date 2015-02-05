@@ -14,6 +14,7 @@
 		E60EF6411A81A1F400C6364F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E60EF6401A81A1F400C6364F /* Images.xcassets */; };
 		E60EF6441A81A1F400C6364F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60EF6421A81A1F400C6364F /* LaunchScreen.xib */; };
 		E60EF6501A81A1F500C6364F /* rottentomatoesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60EF64F1A81A1F500C6364F /* rottentomatoesTests.swift */; };
+		E671E0D11A8348CA007DED8F /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E671E0D01A8348CA007DED8F /* MovieListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		E60EF6491A81A1F500C6364F /* rottentomatoesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rottentomatoesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60EF64E1A81A1F500C6364F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E60EF64F1A81A1F500C6364F /* rottentomatoesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rottentomatoesTests.swift; sourceTree = "<group>"; };
+		E671E0D01A8348CA007DED8F /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		E6D1A58A1A81F1CF008B6A29 /* objc_bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objc_bridging_header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 			children = (
 				E60EF6391A81A1F400C6364F /* AppDelegate.swift */,
 				E60EF63B1A81A1F400C6364F /* ViewController.swift */,
+				E671E0D01A8348CA007DED8F /* MovieListViewController.swift */,
 				E60EF63D1A81A1F400C6364F /* Main.storyboard */,
 				E60EF6401A81A1F400C6364F /* Images.xcassets */,
 				E60EF6421A81A1F400C6364F /* LaunchScreen.xib */,
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E671E0D11A8348CA007DED8F /* MovieListViewController.swift in Sources */,
 				E60EF63C1A81A1F400C6364F /* ViewController.swift in Sources */,
 				E60EF63A1A81A1F400C6364F /* AppDelegate.swift in Sources */,
 			);
