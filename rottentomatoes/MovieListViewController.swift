@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class MovieListViewController: UITableViewController {
 
@@ -15,16 +16,21 @@ class MovieListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ApiKey = ""
-        let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(ApiKey)"
-        let request = NSURLRequest(URL: NSURL(string: RottenTomatoesURLString)!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
-            var errorValue: NSError? = nil
-            let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
-            self.movies = dictionary["movies"] as NSArray
-            self.tableView.reloadData()
-        })
-        
+        var configDict: NSDictionary?
+        if let configFilepath = NSBundle.mainBundle().pathForResource("config", ofType: "plist") {
+            configDict = NSDictionary(contentsOfFile: configFilepath)
+        }
+        if let config = configDict {
+            let ApiKey = config.objectForKey("API_KEY") as String
+            let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(ApiKey)"
+            let request = NSURLRequest(URL: NSURL(string: RottenTomatoesURLString)!)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
+                var errorValue: NSError? = nil
+                let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
+                self.movies = dictionary["movies"] as NSArray
+                self.tableView.reloadData()
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

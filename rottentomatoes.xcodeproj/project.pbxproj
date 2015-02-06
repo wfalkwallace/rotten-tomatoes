@@ -14,6 +14,7 @@
 		E60EF6411A81A1F400C6364F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E60EF6401A81A1F400C6364F /* Images.xcassets */; };
 		E60EF6441A81A1F400C6364F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60EF6421A81A1F400C6364F /* LaunchScreen.xib */; };
 		E60EF6501A81A1F500C6364F /* rottentomatoesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60EF64F1A81A1F500C6364F /* rottentomatoesTests.swift */; };
+		E654E7871A847137007FC2D4 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E654E7861A847137007FC2D4 /* config.plist */; };
 		E671E0D11A8348CA007DED8F /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E671E0D01A8348CA007DED8F /* MovieListViewController.swift */; };
 		E671E0D31A835504007DED8F /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E671E0D21A835504007DED8F /* MovieListTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		E60EF6491A81A1F500C6364F /* rottentomatoesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rottentomatoesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60EF64E1A81A1F500C6364F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E60EF64F1A81A1F500C6364F /* rottentomatoesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rottentomatoesTests.swift; sourceTree = "<group>"; };
+		E654E7861A847137007FC2D4 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		E671E0D01A8348CA007DED8F /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		E671E0D21A835504007DED8F /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		E6D1A58A1A81F1CF008B6A29 /* objc_bridging_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objc_bridging_header.h; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		E60EF62B1A81A1F400C6364F = {
 			isa = PBXGroup;
 			children = (
+				E654E7861A847137007FC2D4 /* config.plist */,
 				E60EF6361A81A1F400C6364F /* rottentomatoes */,
 				E60EF64C1A81A1F500C6364F /* rottentomatoesTests */,
 				E60EF6351A81A1F400C6364F /* Products */,
@@ -230,6 +233,7 @@
 				E60EF63F1A81A1F400C6364F /* Main.storyboard in Resources */,
 				E60EF6441A81A1F400C6364F /* LaunchScreen.xib in Resources */,
 				E60EF6411A81A1F400C6364F /* Images.xcassets in Resources */,
+				E654E7871A847137007FC2D4 /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
