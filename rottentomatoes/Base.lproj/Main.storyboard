@@ -27,6 +27,7 @@
             <objects>
                 <tableViewController id="8f1-HO-xO3" customClass="MovieListViewController" customModule="rottentomatoes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="22" sectionFooterHeight="22" id="NCH-Sv-BBK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -35,36 +36,56 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tpy-XX-U1T" id="U0E-Z6-VME">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwF-ka-fEY">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwF-ka-fEY">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                 <rect key="frame" x="308" y="8" width="84" height="21"/>
                                             </variation>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1c5-et-vAA">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                 <rect key="frame" x="8" y="8" width="100" height="85"/>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV3-ha-vme">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV3-ha-vme">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                 <rect key="frame" x="304" y="37" width="88" height="21"/>
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="iV3-ha-vme" secondAttribute="bottom" constant="8" id="3Te-ao-2po"/>
+                                        <constraint firstItem="iV3-ha-vme" firstAttribute="top" secondItem="WwF-ka-fEY" secondAttribute="bottom" constant="8" id="5Pf-XW-XNG"/>
+                                        <constraint firstItem="WwF-ka-fEY" firstAttribute="leading" secondItem="1c5-et-vAA" secondAttribute="trailing" constant="8" id="PMQ-wi-jnb"/>
+                                        <constraint firstItem="1c5-et-vAA" firstAttribute="leading" secondItem="U0E-Z6-VME" secondAttribute="leading" constant="8" id="el1-16-jyq"/>
+                                        <constraint firstItem="iV3-ha-vme" firstAttribute="leading" secondItem="1c5-et-vAA" secondAttribute="trailing" constant="8" id="rGl-Me-Y2h"/>
+                                        <constraint firstItem="WwF-ka-fEY" firstAttribute="top" secondItem="U0E-Z6-VME" secondAttribute="top" constant="8" id="tek-Ka-ebH"/>
+                                        <constraint firstAttribute="trailing" secondItem="iV3-ha-vme" secondAttribute="trailing" constant="8" id="vQT-iC-Aoe"/>
+                                        <constraint firstAttribute="trailing" secondItem="WwF-ka-fEY" secondAttribute="trailing" constant="8" id="z1F-pF-PpE"/>
+                                    </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="WwF-ka-fEY"/>
                                             <exclude reference="1c5-et-vAA"/>
                                             <exclude reference="iV3-ha-vme"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="el1-16-jyq"/>
+                                            <exclude reference="3Te-ao-2po"/>
+                                            <exclude reference="5Pf-XW-XNG"/>
+                                            <exclude reference="rGl-Me-Y2h"/>
+                                            <exclude reference="vQT-iC-Aoe"/>
+                                            <exclude reference="PMQ-wi-jnb"/>
+                                            <exclude reference="tek-Ka-ebH"/>
+                                            <exclude reference="z1F-pF-PpE"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -72,6 +93,16 @@
                                             <include reference="WwF-ka-fEY"/>
                                             <include reference="1c5-et-vAA"/>
                                             <include reference="iV3-ha-vme"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="el1-16-jyq"/>
+                                            <include reference="3Te-ao-2po"/>
+                                            <include reference="5Pf-XW-XNG"/>
+                                            <include reference="rGl-Me-Y2h"/>
+                                            <include reference="vQT-iC-Aoe"/>
+                                            <include reference="PMQ-wi-jnb"/>
+                                            <include reference="tek-Ka-ebH"/>
+                                            <include reference="z1F-pF-PpE"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
