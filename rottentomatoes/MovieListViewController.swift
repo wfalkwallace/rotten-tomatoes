@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SwiftyJSON
+import MRProgress
 
 class MovieListViewController: UITableViewController {
 
@@ -17,20 +18,21 @@ class MovieListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var configDict: NSDictionary?
-        if let configFilepath = NSBundle.mainBundle().pathForResource("config", ofType: "plist") {
-            configDict = NSDictionary(contentsOfFile: configFilepath)
-        }
-        if let config = configDict {
+        if let config = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("config", ofType: "plist")!) {
             let ApiKey = config.objectForKey("API_KEY") as String
             let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(ApiKey)"
             let request = NSURLRequest(URL: NSURL(string: RottenTomatoesURLString)!)
+            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
                 var errorValue: NSError? = nil
                 let json = JSON(data: data)
                 self.movies = json["movies"].arrayValue
                 self.tableView.reloadData()
+                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
             })
+        }
+        else {
+//            network error
         }
     }
 
@@ -48,11 +50,10 @@ class MovieListViewController: UITableViewController {
 
         let title = self.movies[indexPath.row]["title"].stringValue
         let synopsis = self.movies[indexPath.row]["synopsis"].stringValue
-        let thumbnailURL = NSURL(string: self.movies[indexPath.row]["posters"]["thumbnail"].stringValue)
+        let thumbnailURL = NSURL(string: self.movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
         
         cell.movieTitleLabel.text = title
-        cell.movieDescriptionLabel.text = synopsis
-        cell.movieDescriptionLabel.numberOfLines = 0
+        cell.movieTitleLabel.numberOfLines = 0
         cell.movieThumbnailImageView.setImageWithURL(thumbnailURL)
         
         return cell
