@@ -8,6 +8,6 @@ pod 'MRProgress', '~> 0.8.1'
 
 end
 
-target 'instagramTests' do
+target 'rottentomatoesTests' do
 
 end
