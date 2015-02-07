@@ -10,6 +10,5 @@
 #define rottentomatoes_objc_bridging_header_h
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import <MRProgress/MRProgress.h>
 
 #endif
