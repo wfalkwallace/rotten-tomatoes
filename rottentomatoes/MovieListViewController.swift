@@ -8,10 +8,11 @@
 
 import UIKit
 import Foundation
+import SwiftyJSON
 
 class MovieListViewController: UITableViewController {
 
-    var movies = []
+    var movies: Array<JSON> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,8 @@ class MovieListViewController: UITableViewController {
             let request = NSURLRequest(URL: NSURL(string: RottenTomatoesURLString)!)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
                 var errorValue: NSError? = nil
-                let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
-                self.movies = dictionary["movies"] as NSArray
+                let json = JSON(data: data)
+                self.movies = json["movies"].arrayValue
                 self.tableView.reloadData()
             })
         }
@@ -45,15 +46,14 @@ class MovieListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
 
-        let title = self.movies[indexPath.row]["title"] as String
-        let synopsis = self.movies[indexPath.row]["synopsis"] as NSString
-        let synopsisLength = synopsis.length //< 140 ? synopsis.length : 140
-        let thumbnailURLString = (self.movies[indexPath.row]["posters"] as NSDictionary)["thumbnail"] as String
+        let title = self.movies[indexPath.row]["title"].stringValue
+        let synopsis = self.movies[indexPath.row]["synopsis"].stringValue
+        let thumbnailURL = NSURL(string: self.movies[indexPath.row]["posters"]["thumbnail"].stringValue)
         
         cell.movieTitleLabel.text = title
-        cell.movieDescriptionLabel.text = synopsis.substringToIndex(synopsisLength)
+        cell.movieDescriptionLabel.text = synopsis
         cell.movieDescriptionLabel.numberOfLines = 0
-        cell.movieThumbnailImageView.setImageWithURL(NSURL(string: thumbnailURLString))
+        cell.movieThumbnailImageView.setImageWithURL(thumbnailURL)
         
         return cell
     }

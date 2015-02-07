@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4EB9A087F7368A493C1E1E53"
+               BuildableName = "Pods_rottentomatoes.framework"
+               BlueprintName = "Pods-rottentomatoes"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "E60EF6331A81A1F400C6364F"
                BuildableName = "rottentomatoes.app"
                BlueprintName = "rottentomatoes"
