@@ -19,11 +19,10 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
         if let config = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("config", ofType: "plist")!) {
             let ApiKey = config.objectForKey("API_KEY") as String
             let RTBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
-            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
             Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": ApiKey, "limit": "50"])
                 .responseJSON { (_, _, data, error) in
                     if let data = data {
@@ -38,7 +37,7 @@ class MovieListViewController: UIViewController {
                         // something went wrong
                     }
                     MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
-            }
+                }
         }
         else {
             // api key error
@@ -61,6 +60,7 @@ class MovieListViewController: UIViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
+        MRProgressOverlayView.showOverlayAddedTo(cell, animated: true)
 
         if let movies = self.movies {
             // List Title
@@ -78,12 +78,20 @@ class MovieListViewController: UIViewController {
             cell.movieDescriptionLabel.numberOfLines = 0
             
             // List Thumbnail
-            let thumbnailURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)
-            let imageURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
             let placeholder = UIImageView()
+            let thumbnailURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)
             placeholder.setImageWithURL(thumbnailURL)
             let placeholderImage = placeholder.image
-            cell.movieThumbnailImageView.setImageWithURL(imageURL, placeholderImage: placeholderImage)
+
+            let imageURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
+            let request = NSURLRequest(URL: imageURL!)
+            
+            cell.movieThumbnailImageView.setImageWithURLRequest(request, placeholderImage: placeholderImage, success: { (_, _, image) -> Void in
+                if let image = image {
+                    MRProgressOverlayView.dismissOverlayForView(cell, animated: true)
+                }
+                
+                }, failure: nil)
         }
         return cell
     }
