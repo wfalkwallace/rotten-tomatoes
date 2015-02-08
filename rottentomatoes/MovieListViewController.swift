@@ -85,7 +85,12 @@ class MovieListViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Did tap row: \(indexPath.row)")
+        let detailView = MovieDetailViewController()
+        if let movies = self.movies {
+            let movie = movies[indexPath.row]
+            detailView.movie = movie.dictionaryValue
+            self.navigationController?.pushViewController(detailView, animated: true)
+        }
     }
 
 }
