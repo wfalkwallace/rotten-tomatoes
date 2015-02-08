@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "iconmonstr-disc-icon-256 2.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "iconmonstr-antenna-5-icon-256.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
