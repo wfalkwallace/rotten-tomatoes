@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 Falk-Wallace. All rights reserved.
 //
 
-import UIKit
+import Alamofire
 import Foundation
-import SwiftyJSON
 import MRProgress
+import SwiftyJSON
+import UIKit
 
 class MovieListViewController: UITableViewController {
 
@@ -20,16 +21,18 @@ class MovieListViewController: UITableViewController {
         
         if let config = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("config", ofType: "plist")!) {
             let ApiKey = config.objectForKey("API_KEY") as String
-            let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(ApiKey)"
-            let request = NSURLRequest(URL: NSURL(string: RottenTomatoesURLString)!)
+            let RTBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
             MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
-                var errorValue: NSError? = nil
-                let json = JSON(data: data)
-                self.movies = json["movies"].arrayValue
-                self.tableView.reloadData()
-                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
-            })
+            Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": ApiKey])
+                .responseJSON { (_, reponse, data, error) in
+                    println("response: \(reponse)")
+                    println("data: \(data)")
+                    println("error: \(error)")
+//                    let json = JSON(data: data!)
+//                    self.movies = json["movies"].arrayValue
+                    self.tableView.reloadData()
+                    MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            }
         }
         else {
 //            network error
