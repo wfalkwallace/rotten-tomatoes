@@ -13,7 +13,7 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
 
-    var movie: Dictionary<String, JSON>?
+    var movieData: AnyObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,25 @@ class MovieDetailViewController: UIViewController {
     }
     
         override func loadView() {
-            let myView = UIView(frame: CGRectZero)
-            myView.backgroundColor = UIColor.greenColor()
-            self.view = myView
+            let movie = JSON(movieData!)
+            let view = UIView(frame: CGRectZero)
+            view.backgroundColor = UIColor.blueColor()
+            
+            let descriptionView = UIView(frame: CGRectZero)
+            descriptionView.backgroundColor = UIColor.greenColor()
+//            descriptionView.frame.size.height = CGRectZero.size.height/2
+//            descriptionView.frame.origin.x = CGRectZero.size.height/2
+            let titleLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+            titleLabel.text = movie["title"].stringValue
+            
+            let posterImageView = UIImageView(frame: CGRectZero)
+            let posterURL = NSURL(string: movie["posters"]["profile"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
+            posterImageView.setImageWithURL(posterURL, placeholderImage: UIImage(named: "logo-fresh"))
+
+
+            self.view = view
+            self.view.addSubview(descriptionView)
+
         }
 
 }

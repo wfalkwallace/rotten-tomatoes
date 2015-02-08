@@ -41,7 +41,7 @@ class MovieListViewController: UIViewController {
             }
         }
         else {
-            // APIKEY ERROR
+            // api key error
         }
     }
 
@@ -78,8 +78,12 @@ class MovieListViewController: UIViewController {
             cell.movieDescriptionLabel.numberOfLines = 0
             
             // List Thumbnail
-            let thumbnailURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
-            cell.movieThumbnailImageView.setImageWithURL(thumbnailURL)
+            let thumbnailURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)
+            let imageURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
+            let placeholder = UIImageView()
+            placeholder.setImageWithURL(thumbnailURL)
+            let placeholderImage = placeholder.image
+            cell.movieThumbnailImageView.setImageWithURL(imageURL, placeholderImage: placeholderImage)
         }
         return cell
     }
@@ -88,7 +92,7 @@ class MovieListViewController: UIViewController {
         let detailView = MovieDetailViewController()
         if let movies = self.movies {
             let movie = movies[indexPath.row]
-            detailView.movie = movie.dictionaryValue
+            detailView.movieData = movie.object
             self.navigationController?.pushViewController(detailView, animated: true)
         }
     }
