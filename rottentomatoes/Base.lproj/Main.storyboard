@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="333" y="1033"/>
         </scene>
-        <!--Item-->
+        <!--DVDs-->
         <scene sceneID="QBJ-SL-TXp">
             <objects>
                 <tableViewController id="8f1-HO-xO3" customClass="MovieListViewController" customModule="rottentomatoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,6 +31,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="1" green="0.0" blue="0.01049331014" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="com.falk-wallace.MovieTableCell" rowHeight="150" id="tpy-XX-U1T" customClass="MovieListTableViewCell" customModule="rottentomatoes" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -69,6 +70,7 @@
                                             </variation>
                                         </imageView>
                                     </subviews>
+                                    <color key="tintColor" red="1" green="0.0" blue="0.01049331014" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="1c5-et-vAA" firstAttribute="top" secondItem="U0E-Z6-VME" secondAttribute="top" constant="8" id="743-1o-CT7"/>
                                         <constraint firstItem="WwF-ka-fEY" firstAttribute="leading" secondItem="1c5-et-vAA" secondAttribute="trailing" constant="8" id="PMQ-wi-jnb"/>
@@ -106,8 +108,8 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.2823529541" green="0.392156899" blue="0.53333336109999996" alpha="1" colorSpace="deviceRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="backgroundColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.38823529410000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.01049331014017163" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="movieThumbnailImageView" destination="1c5-et-vAA" id="dC8-zj-gZL"/>
                                     <outlet property="movieTitleLabel" destination="WwF-ka-fEY" id="pRf-Fa-c8E"/>
@@ -119,7 +121,7 @@
                             <outlet property="delegate" destination="8f1-HO-xO3" id="4mW-kS-tzh"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="V0h-cw-C4B"/>
+                    <tabBarItem key="tabBarItem" title="DVDs" image="Icon-DVD" id="V0h-cw-C4B"/>
                     <navigationItem key="navigationItem" id="316-Xh-cm2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXg-yf-ija" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -163,7 +165,7 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetworkError" translatesAutoresizingMaskIntoConstraints="NO" id="C4D-dH-ErQ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-NetworkError" translatesAutoresizingMaskIntoConstraints="NO" id="C4D-dH-ErQ">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="sfd-fS-6wP"/>
@@ -241,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="2109" y="-230"/>
         </scene>
-        <!--Item 2-->
+        <!--Box Office-->
         <scene sceneID="KLV-yl-t59">
             <objects>
                 <viewController id="zcv-zf-XD2" sceneMemberID="viewController">
@@ -253,7 +255,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="05m-CE-hSP"/>
+                    <tabBarItem key="tabBarItem" title="Box Office" image="Icon-Movie" id="05m-CE-hSP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8Z-g9-Q2v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -264,9 +266,9 @@
             <objects>
                 <tabBarController id="CAR-7X-Dl0" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="frd-OY-f3g"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="nNP-zh-Kxg">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="nNP-zh-Kxg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -282,7 +284,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NetworkError" width="114" height="128"/>
+        <image name="Icon-DVD" width="30" height="30"/>
+        <image name="Icon-Movie" width="30" height="30"/>
+        <image name="Icon-NetworkError" width="228" height="256"/>
     </resources>
     <color key="tintColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.38823529410000002" alpha="1" colorSpace="deviceRGB"/>
 </document>
