@@ -31,3 +31,6 @@ Credits
 ---------
 * [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON)
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [AlamoFire]()
+* [SwiftyJSON]()
+* [MRProgress]()
