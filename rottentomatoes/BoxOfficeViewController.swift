@@ -1,8 +1,8 @@
 //
-//  MovieListViewController.swift
+//  BoxOfficeViewController.swift
 //  rottentomatoes
 //
-//  Created by William Falk-Wallace on 2/4/15.
+//  Created by William Falk-Wallace on 2/7/15.
 //  Copyright (c) 2015 Falk-Wallace. All rights reserved.
 //
 
@@ -12,8 +12,8 @@ import MRProgress
 import SwiftyJSON
 import UIKit
 
-class MovieListViewController: UIViewController {
-
+class BoxOfficeViewController: UIViewController {
+    
     var movies: Array<JSON>?
     @IBOutlet weak var movieListTableView: UITableView!
     
@@ -22,7 +22,7 @@ class MovieListViewController: UIViewController {
         
         if let config = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("config", ofType: "plist")!) {
             let ApiKey = config.objectForKey("API_KEY") as String
-            let RTBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
+            let RTBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json"
             MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
             Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": ApiKey, "limit": "50"])
                 .responseJSON { (_, _, data, error) in
@@ -44,7 +44,7 @@ class MovieListViewController: UIViewController {
             // APIKEY ERROR
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,17 +61,17 @@ class MovieListViewController: UIViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
-
+        
         if let movies = self.movies {
             // List Title
             let title = movies[indexPath.row]["title"].stringValue
             cell.movieTitleLabel.text = title
             cell.movieDescriptionLabel.numberOfLines = 0
-
+            
             // List Rating
             let rating = "(" + movies[indexPath.row]["mpaa_rating"].stringValue + ")"
             cell.movieRatingLabel.text = rating
-
+            
             // List Description
             let synopsis = movies[indexPath.row]["synopsis"].stringValue
             cell.movieDescriptionLabel.text = synopsis
@@ -87,5 +87,5 @@ class MovieListViewController: UIViewController {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Did tap row: \(indexPath.row)")
     }
-
+    
 }
