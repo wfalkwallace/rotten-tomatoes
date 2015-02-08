@@ -42,9 +42,10 @@ class MovieDetailViewController: UIViewController {
             let posterURL = NSURL(string: movie["posters"]["profile"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
             posterImageView.setImageWithURL(posterURL, placeholderImage: UIImage(named: "logo-fresh"))
 
-
-            self.view = view
+            self.view.addSubview(posterImageView)
             self.view.addSubview(descriptionView)
+            self.view = view
+
 
         }
 
