@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3BA45D899F41B40C45B4C292 /* Pods_rottentomatoes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E535BF94F6B5BF86CE1A5FF5 /* Pods_rottentomatoes.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E60EF63A1A81A1F400C6364F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60EF6391A81A1F400C6364F /* AppDelegate.swift */; };
-		E60EF63C1A81A1F400C6364F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60EF63B1A81A1F400C6364F /* ViewController.swift */; };
 		E60EF63F1A81A1F400C6364F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E60EF63D1A81A1F400C6364F /* Main.storyboard */; };
 		E60EF6411A81A1F400C6364F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E60EF6401A81A1F400C6364F /* Images.xcassets */; };
 		E60EF6441A81A1F400C6364F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60EF6421A81A1F400C6364F /* LaunchScreen.xib */; };
@@ -39,7 +38,6 @@
 		E60EF6341A81A1F400C6364F /* rottentomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rottentomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60EF6381A81A1F400C6364F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E60EF6391A81A1F400C6364F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E60EF63B1A81A1F400C6364F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E60EF63E1A81A1F400C6364F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E60EF6401A81A1F400C6364F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E60EF6431A81A1F400C6364F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				E60EF6391A81A1F400C6364F /* AppDelegate.swift */,
-				E60EF63B1A81A1F400C6364F /* ViewController.swift */,
 				E671E0D01A8348CA007DED8F /* MovieListViewController.swift */,
 				E671E0D21A835504007DED8F /* MovieListTableViewCell.swift */,
 				E60EF63D1A81A1F400C6364F /* Main.storyboard */,
@@ -307,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E671E0D11A8348CA007DED8F /* MovieListViewController.swift in Sources */,
-				E60EF63C1A81A1F400C6364F /* ViewController.swift in Sources */,
 				E671E0D31A835504007DED8F /* MovieListTableViewCell.swift in Sources */,
 				E60EF63A1A81A1F400C6364F /* AppDelegate.swift in Sources */,
 			);

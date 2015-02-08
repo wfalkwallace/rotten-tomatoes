@@ -16,14 +16,14 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="8f1-HO-xO3" kind="relationship" relationship="rootViewController" id="snR-yd-ZK7"/>
+                        <segue destination="CAR-7X-Dl0" kind="relationship" relationship="rootViewController" id="ix4-ZK-BSp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJx-xI-5mQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="333" y="1033"/>
         </scene>
-        <!--Movie List View Controller-->
+        <!--Item-->
         <scene sceneID="QBJ-SL-TXp">
             <objects>
                 <tableViewController id="8f1-HO-xO3" customClass="MovieListViewController" customModule="rottentomatoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -118,11 +118,109 @@
                             <outlet property="delegate" destination="8f1-HO-xO3" id="4mW-kS-tzh"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="V0h-cw-C4B"/>
                     <navigationItem key="navigationItem" id="316-Xh-cm2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXg-yf-ija" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="g2E-42-fXg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVt-8B-kx4">
+                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="128" y="2" width="145" height="21"/>
+                            </variation>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetworkError" translatesAutoresizingMaskIntoConstraints="NO" id="C4D-dH-ErQ">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <variation key="widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="128" y="2" width="21" height="21"/>
+                            </variation>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="aVt-8B-kx4" secondAttribute="centerX" id="Mhj-8p-mlb"/>
+                        <constraint firstAttribute="centerY" secondItem="C4D-dH-ErQ" secondAttribute="centerY" id="UDv-ad-gH5"/>
+                        <constraint firstItem="aVt-8B-kx4" firstAttribute="leading" secondItem="C4D-dH-ErQ" secondAttribute="leading" id="Wmk-QH-oKD"/>
+                        <constraint firstItem="C4D-dH-ErQ" firstAttribute="leading" secondItem="aVt-8B-kx4" secondAttribute="leading" id="bjV-SR-V00"/>
+                        <constraint firstAttribute="centerY" secondItem="aVt-8B-kx4" secondAttribute="centerY" id="uSD-4O-46I"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="aVt-8B-kx4"/>
+                            <exclude reference="C4D-dH-ErQ"/>
+                        </mask>
+                        <mask key="constraints">
+                            <exclude reference="UDv-ad-gH5"/>
+                            <exclude reference="bjV-SR-V00"/>
+                            <exclude reference="Mhj-8p-mlb"/>
+                            <exclude reference="Wmk-QH-oKD"/>
+                            <exclude reference="uSD-4O-46I"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="aVt-8B-kx4"/>
+                            <include reference="C4D-dH-ErQ"/>
+                        </mask>
+                        <mask key="constraints">
+                            <include reference="UDv-ad-gH5"/>
+                            <include reference="bjV-SR-V00"/>
+                            <include reference="Mhj-8p-mlb"/>
+                            <exclude reference="Wmk-QH-oKD"/>
+                            <include reference="uSD-4O-46I"/>
+                        </mask>
+                    </variation>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1107" y="1033"/>
+            <point key="canvasLocation" x="2505" y="691"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="KLV-yl-t59">
+            <objects>
+                <viewController id="zcv-zf-XD2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iXK-zH-Day"/>
+                        <viewControllerLayoutGuide type="bottom" id="KIa-oY-rJJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HTI-TG-Mat">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="05m-CE-hSP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X8Z-g9-Q2v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2505" y="1374"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="c82-Dg-5HQ">
+            <objects>
+                <tabBarController id="CAR-7X-Dl0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="frd-OY-f3g"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="nNP-zh-Kxg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="zcv-zf-XD2" kind="relationship" relationship="viewControllers" id="ovb-dX-E4Z"/>
+                        <segue destination="8f1-HO-xO3" kind="relationship" relationship="viewControllers" id="gyh-Le-iW0"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YeG-6w-pVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1158" y="1033"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NetworkError" width="114" height="128"/>
+    </resources>
+    <color key="tintColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.38823529410000002" alpha="1" colorSpace="deviceRGB"/>
 </document>
