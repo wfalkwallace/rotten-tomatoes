@@ -43,6 +43,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="OEE-AK-8bi" id="fOu-LH-o0g"/>
+                                    </connections>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="com.falk-wallace.MovieTableCell" rowHeight="200" id="tpy-XX-U1T" customClass="MovieListTableViewCell" customModule="Potato" customModuleProvider="target">
@@ -558,6 +561,9 @@
                                 <include reference="ifF-S0-FBP"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="2wK-CR-nI8" appends="YES" id="F39-fK-Jb1"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="DVDs" image="Icon-DVD" id="pbZ-WT-TUh"/>
                     <navigationItem key="navigationItem" title="Rotten Potatoes" id="Jgk-2N-YM5">
@@ -577,6 +583,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sF-S8-OkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="2wK-CR-nI8">
+                    <connections>
+                        <action selector="onWindowTapped:" destination="OEE-AK-8bi" id="W1U-6g-yJI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1147.5" y="1027"/>
         </scene>

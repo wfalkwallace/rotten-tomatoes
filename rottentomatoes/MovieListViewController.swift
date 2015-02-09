@@ -12,9 +12,10 @@ import MRProgress
 import SwiftyJSON
 import UIKit
 
-class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
     var movies: Array<JSON>?
+    var filteredMovies: Array<JSON>?
     var ApiKey: String?
     let RTDVDBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
     let RTBoxOfficeBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json"
@@ -83,6 +84,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
                         self.networkErrorBarView.hidden = true
                         let json = JSON(data)
                         self.movies = json["movies"].arrayValue
+                        self.filteredMovies = self.movies
                         self.movieListTableView.reloadData()
                         self.movieListCollectionView.reloadData()
                     }
@@ -94,13 +96,26 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
         }
     }
     
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.isEmpty) {
+            self.filteredMovies = movies
+        }
+        else if let movies = movies {
+                filteredMovies = movies.filter({
+                    $0["title"].stringValue.rangeOfString(searchText) != nil
+                    && $0["synopsis"].stringValue.rangeOfString(searchText) != nil
+                })
+        }
+        self.movieListTableView.reloadData()
+    }
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let movies = self.movies {
+        if let movies = self.filteredMovies {
             return movies.count
         }
         else {
@@ -112,7 +127,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
         cell.movieThumbnailImageView.image = nil
         
-        if let movies = self.movies {
+        if let movies = self.filteredMovies {
             // List Title
             let title = movies[indexPath.row]["title"].stringValue
             cell.movieTitleLabel.text = title

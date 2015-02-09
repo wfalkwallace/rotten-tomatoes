@@ -44,11 +44,8 @@ class MovieDetailViewController: UIViewController {
         descriptionView.addSubview(descriptionLabel)
         
         descriptionView.contentSize = CGSizeMake(windowWidth - 16, descriptionLabel.frame.size.height + 49)
-        
-        
-        
-        
-        
+
+        // Image Stuff
         let posterImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: windowWidth, height: windowHeight))
         
         let thumbnailURLRequest = NSURLRequest(URL: NSURL(string: movie["posters"]["profile"].stringValue)!)
