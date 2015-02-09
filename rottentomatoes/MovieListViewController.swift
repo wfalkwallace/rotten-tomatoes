@@ -18,6 +18,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
     var ApiKey: String?
     let RTDVDBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
     let RTBoxOfficeBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json"
+    var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var movieListTableView: UITableView!
     @IBOutlet weak var movieListTabBar: UITabBar!
@@ -27,13 +28,31 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         var defaults = NSUserDefaults.standardUserDefaults()
         ApiKey = defaults.stringForKey("apikey")
-        loadResults("")
+        loadResults()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        movieListTableView.insertSubview(refreshControl, atIndex: 0)
     }
 
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         loadResults(item.title!)
     }
     
+    func onRefresh() {
+        loadResults()
+        self.refreshControl.endRefreshing()
+    }
+    
+    func loadResults() {
+        if let tab = movieListTabBar.selectedItem {
+            loadResults(tab.title!)
+        }
+        else {
+            loadResults("DVDs")
+        }
+        
+    }
     
     func loadResults(tab: String) {
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
