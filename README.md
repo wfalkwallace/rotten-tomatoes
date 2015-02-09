@@ -2,7 +2,9 @@
 
 This is a movies app displaying box office and top rental DVDs using the [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: [`<Number of hours spent>`](https://wakatime.com/@wfalkwallace/projects/szbrsjsglf)
+* To run, you need to rename config.plist.template to config.plist and add your Rotten Tomatoes API key to it. *
+
+Time spent: [15 Hours](https://wakatime.com/@wfalkwallace/projects/szbrsjsglf)
 
 ### Features
 
@@ -20,12 +22,12 @@ Time spent: [`<Number of hours spent>`](https://wakatime.com/@wfalkwallace/proje
 - [ ] For the larger poster, load the low-res first and switch to high-res when complete.
 - [ ] All images should be cached in memory and disk: AppDelegate has an instance of `NSURLCache` and `NSURLRequest` makes a request with `NSURLRequestReturnCacheDataElseLoad` cache policy. I tested it by turning off wifi and restarting the app.
 - [ ] Customize the highlight and selection effect of the cell.
-- [ ] Customize the navigation bar.
+- [x] Customize the navigation bar.
 - [x] Add a tab bar for Box Office and DVD.
 - [ ] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
 ### Walkthrough
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+![Video Walkthrough](rottentomatoes.gif)
 
 Credits
 ---------
@@ -34,3 +36,4 @@ Credits
 * [AlamoFire](https://github.com/Alamofire/Alamofire)
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 * [MRProgress](https://github.com/mrackwitz/MRProgress)
+* [IconMonstr](http://iconmonstr.com/)

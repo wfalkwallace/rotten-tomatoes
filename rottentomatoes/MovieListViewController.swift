@@ -19,39 +19,42 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
     let RTDVDBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
     let RTBoxOfficeBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json"
     var refreshControl: UIRefreshControl!
+    var displayAsList = true
     
     @IBOutlet weak var movieListTableView: UITableView!
     @IBOutlet weak var movieListTabBar: UITabBar!
     @IBOutlet weak var networkErrorBarView: UIView!
+    @IBOutlet weak var displayMethodButton: UIBarButtonItem!
+    @IBOutlet weak var movieListSearchBar: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var defaults = NSUserDefaults.standardUserDefaults()
         ApiKey = defaults.stringForKey("apikey")
-        loadResults()
+        movieListTabBar.selectedItem = movieListTabBar.items![0] as UITabBarItem
+        loadResults("DVDs")
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         movieListTableView.insertSubview(refreshControl, atIndex: 0)
     }
 
+    @IBAction func displayMethodChanged(sender: AnyObject) {
+        displayAsList = !displayAsList
+        displayMethodButton.image = displayAsList ? UIImage(named: "Icon-GridView") : UIImage(named: "Icon-ListView")
+    }
+    
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         loadResults(item.title!)
     }
     
-    func onRefresh() {
-        loadResults()
-        self.refreshControl.endRefreshing()
+    @IBAction func onWindowTapped(sender: AnyObject) {
+        view.endEditing(true)
     }
     
-    func loadResults() {
-        if let tab = movieListTabBar.selectedItem {
-            loadResults(tab.title!)
-        }
-        else {
-            loadResults("DVDs")
-        }
-        
+    func onRefresh() {
+        loadResults(movieListTabBar.selectedItem!.title!)
+        self.refreshControl.endRefreshing()
     }
     
     func loadResults(tab: String) {

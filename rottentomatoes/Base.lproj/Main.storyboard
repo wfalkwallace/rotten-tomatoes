@@ -42,7 +42,7 @@
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="jEE-bI-iOX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="com.falk-wallace.MovieTableCell" rowHeight="200" id="tpy-XX-U1T" customClass="MovieListTableViewCell" customModule="Potato" customModuleProvider="target">
@@ -347,15 +347,17 @@
                                     <tabBarItem title="DVDs" image="Icon-DVD" id="mqH-XF-dBp"/>
                                     <tabBarItem title="Box Office" image="Icon-Movie" id="plm-gx-0fz"/>
                                 </items>
-                                <color key="tintColor" red="0.036265060260000002" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" red="0.15686274510000001" green="0.2156862745" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="selectedImageTintColor" red="0.036265060260000002" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="OEE-AK-8bi" id="YqQ-J7-Hqm"/>
                                 </connections>
                             </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cTy-ZQ-xMf" secondAttribute="trailing" id="6FE-L4-6V7"/>
                             <constraint firstItem="g2E-42-fXg" firstAttribute="top" secondItem="WcU-0O-mDo" secondAttribute="bottom" id="AO0-gG-Ufb"/>
@@ -426,8 +428,16 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="DVDs" image="Icon-DVD" id="pbZ-WT-TUh"/>
-                    <navigationItem key="navigationItem" title="Rotten Potatoes" id="Jgk-2N-YM5"/>
+                    <navigationItem key="navigationItem" title="Rotten Potatoes" id="Jgk-2N-YM5">
+                        <barButtonItem key="rightBarButtonItem" image="Icon-GridView" id="4hl-YF-PBn">
+                            <connections>
+                                <action selector="displayMethodChanged:" destination="OEE-AK-8bi" id="PNE-gF-dna"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="displayMethodButton" destination="4hl-YF-PBn" id="CDR-yU-Gxn"/>
+                        <outlet property="movieListSearchBar" destination="fRA-oZ-AIo" id="Lco-OF-deP"/>
                         <outlet property="movieListTabBar" destination="cTy-ZQ-xMf" id="bST-i1-EWv"/>
                         <outlet property="movieListTableView" destination="fRA-oZ-AIo" id="fti-VR-zry"/>
                         <outlet property="networkErrorBarView" destination="g2E-42-fXg" id="j8V-pE-kM1"/>
@@ -440,8 +450,9 @@
     </scenes>
     <resources>
         <image name="Icon-DVD" width="30" height="30"/>
+        <image name="Icon-GridView" width="30" height="30"/>
         <image name="Icon-Movie" width="30" height="30"/>
         <image name="Icon-NetworkError" width="228" height="256"/>
     </resources>
-    <color key="tintColor" red="0.18823529410000001" green="0.67843137249999996" blue="0.38823529410000002" alpha="1" colorSpace="deviceRGB"/>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
