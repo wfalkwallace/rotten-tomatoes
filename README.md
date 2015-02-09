@@ -4,7 +4,7 @@ This is a movies app displaying box office and top rental DVDs using the [Rotten
 
 * To run, you need to rename config.plist.template to config.plist and add your Rotten Tomatoes API key to it. *
 
-Time spent: [15 Hours](https://wakatime.com/@wfalkwallace/projects/szbrsjsglf)
+Time spent: [18 Hours](https://wakatime.com/@wfalkwallace/projects/szbrsjsglf)
 
 ### Features
 
@@ -28,6 +28,7 @@ Time spent: [15 Hours](https://wakatime.com/@wfalkwallace/projects/szbrsjsglf)
 
 ### Walkthrough
 ![Video Walkthrough](rottentomatoes.gif)
+![Video Walkthrough 2](rottentomatoesError.gif)
 
 Credits
 ---------

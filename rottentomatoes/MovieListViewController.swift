@@ -34,11 +34,12 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
         var defaults = NSUserDefaults.standardUserDefaults()
         ApiKey = defaults.stringForKey("apikey")
         movieListTabBar.selectedItem = movieListTabBar.items![0] as UITabBarItem
-        loadResults("DVDs")
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         movieListTableView.insertSubview(refreshControl, atIndex: 0)
+        
+        loadResults("DVDs")
     }
     
     override func viewWillAppear(animated: Bool) {

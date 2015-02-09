@@ -59,8 +59,8 @@ class MovieDetailViewController: UIViewController {
                 UIView.animateWithDuration(0.5, animations: {
                     posterImageView.alpha = 1.0
                 })
+                }, failure: nil)
             }, failure: nil)
-        }, failure: nil)
 
         view.addSubview(posterImageView)
         view.addSubview(descriptionView)
