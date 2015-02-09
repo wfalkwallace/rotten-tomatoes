@@ -80,7 +80,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
         var RTBaseURL = (tab == "Box Office") ? RTBoxOfficeBaseURL : RTDVDBaseURL
         if let key = ApiKey {
-            Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": key, "limit": "20"])
+            Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": key, "limit": "50"])
                 .responseJSON { (_, _, data, error) in
                     if let error = error {
                         // network error (first because sometimes you get error and data)
