@@ -15,7 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // style the navbar
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = UIColor(red: 0.156, green: 0.215, blue: 0.294, alpha:0.5)
+        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "MarketingScript", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        // set up some saved defaults
+        if let config = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("config", ofType: "plist")!) {
+            let ApiKey = config.objectForKey("API_KEY") as String
+            var defaultSettings = ["apikey":ApiKey]
+            NSUserDefaults.standardUserDefaults().registerDefaults(defaultSettings)
+        }
+        else {
+            // API KEY ERROR
+        }
+
         return true
     }
 

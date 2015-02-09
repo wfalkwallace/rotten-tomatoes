@@ -12,26 +12,43 @@ import MRProgress
 import SwiftyJSON
 import UIKit
 
-class MovieListViewController: UIViewController {
+class MovieListViewController: UIViewController, UITabBarDelegate {
 
     var movies: Array<JSON>?
+    var ApiKey: String?
+    let RTDVDBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
+    let RTBoxOfficeBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json"
+    
     @IBOutlet weak var movieListTableView: UITableView!
+    @IBOutlet weak var movieListTabBar: UITabBar!
+    @IBOutlet weak var networkErrorBarView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var defaults = NSUserDefaults.standardUserDefaults()
+        ApiKey = defaults.stringForKey("apikey")
+        loadResults("")
+    }
+
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        loadResults(item.title!)
+    }
+    
+    
+    func loadResults(tab: String) {
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
-        if let config = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("config", ofType: "plist")!) {
-            let ApiKey = config.objectForKey("API_KEY") as String
-            let RTBaseURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json"
-            Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": ApiKey, "limit": "50"])
+        var RTBaseURL = (tab == "Box Office") ? RTBoxOfficeBaseURL : RTDVDBaseURL
+        if let key = ApiKey {
+            Alamofire.request(.GET, RTBaseURL, parameters: ["apikey": key, "limit": "20"])
                 .responseJSON { (_, _, data, error) in
-                    if let data = data {
+                    if let error = error {
+                        // network error (first because sometimes you get error and data)
+                        self.networkErrorBarView.hidden = false
+                    }
+                    else if let data = data {
                         let json = JSON(data)
                         self.movies = json["movies"].arrayValue
                         self.movieListTableView.reloadData()
-                    }
-                    else if let error = error {
-                        // network error
                     }
                     else {
                         // something went wrong
@@ -39,11 +56,8 @@ class MovieListViewController: UIViewController {
                     MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
                 }
         }
-        else {
-            // api key error
-        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,8 +74,8 @@ class MovieListViewController: UIViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
-        MRProgressOverlayView.showOverlayAddedTo(cell, animated: true)
-
+        cell.movieThumbnailImageView.image = nil;
+        
         if let movies = self.movies {
             // List Title
             let title = movies[indexPath.row]["title"].stringValue
@@ -78,20 +92,9 @@ class MovieListViewController: UIViewController {
             cell.movieDescriptionLabel.numberOfLines = 0
             
             // List Thumbnail
-            let placeholder = UIImageView()
             let thumbnailURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)
-            placeholder.setImageWithURL(thumbnailURL)
-            let placeholderImage = placeholder.image
-
-            let imageURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
-            let request = NSURLRequest(URL: imageURL!)
-            
-            cell.movieThumbnailImageView.setImageWithURLRequest(request, placeholderImage: placeholderImage, success: { (_, _, image) -> Void in
-                if let image = image {
-                    MRProgressOverlayView.dismissOverlayForView(cell, animated: true)
-                }
+            cell.movieThumbnailImageView.setImageWithURL(thumbnailURL)
                 
-                }, failure: nil)
         }
         return cell
     }
