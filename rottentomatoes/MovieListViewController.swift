@@ -40,6 +40,12 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         movieListTableView.insertSubview(refreshControl, atIndex: 0)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let indexPath = movieListTableView.indexPathForSelectedRow() {
+            movieListTableView.deselectRowAtIndexPath(indexPath, animated:true)
+        }
+    }
 
     @IBAction func displayMethodChanged(sender: AnyObject) {
         displayAsList = !displayAsList
@@ -126,6 +132,9 @@ class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
         cell.movieThumbnailImageView.image = nil
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor.whiteColor()
+        cell.selectedBackgroundView = selectedView
         
         if let movies = self.filteredMovies {
             // List Title

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4EB9A087F7368A493C1E1E53"
+               BlueprintIdentifier = "16A269730B0BCDB5ED8BF123"
                BuildableName = "Pods_rottentomatoes.framework"
                BlueprintName = "Pods-rottentomatoes"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E60EF6331A81A1F400C6364F"
-               BuildableName = "rottentomatoes.app"
+               BuildableName = "Potato.app"
                BlueprintName = "rottentomatoes"
                ReferencedContainer = "container:rottentomatoes.xcodeproj">
             </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E60EF6331A81A1F400C6364F"
-            BuildableName = "rottentomatoes.app"
+            BuildableName = "Potato.app"
             BlueprintName = "rottentomatoes"
             ReferencedContainer = "container:rottentomatoes.xcodeproj">
          </BuildableReference>
@@ -91,7 +91,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E60EF6331A81A1F400C6364F"
-            BuildableName = "rottentomatoes.app"
+            BuildableName = "Potato.app"
             BlueprintName = "rottentomatoes"
             ReferencedContainer = "container:rottentomatoes.xcodeproj">
          </BuildableReference>
@@ -110,7 +110,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E60EF6331A81A1F400C6364F"
-            BuildableName = "rottentomatoes.app"
+            BuildableName = "Potato.app"
             BlueprintName = "rottentomatoes"
             ReferencedContainer = "container:rottentomatoes.xcodeproj">
          </BuildableReference>
