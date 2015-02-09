@@ -37,7 +37,7 @@
 		954CB2BDC3FE3A91C74463CF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9A021F4BB7112ADB1E52AFD7 /* Pods-rottentomatoes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rottentomatoes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rottentomatoes/Pods-rottentomatoes.debug.xcconfig"; sourceTree = "<group>"; };
 		E535BF94F6B5BF86CE1A5FF5 /* Pods_rottentomatoes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rottentomatoes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E60EF6341A81A1F400C6364F /* rottentomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rottentomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E60EF6341A81A1F400C6364F /* Potato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Potato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60EF6381A81A1F400C6364F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E60EF6391A81A1F400C6364F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E60EF63E1A81A1F400C6364F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		E60EF6351A81A1F400C6364F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E60EF6341A81A1F400C6364F /* rottentomatoes.app */,
+				E60EF6341A81A1F400C6364F /* Potato.app */,
 				E60EF6491A81A1F500C6364F /* rottentomatoesTests.xctest */,
 			);
 			name = Products;
@@ -184,7 +184,7 @@
 			);
 			name = rottentomatoes;
 			productName = rottentomatoes;
-			productReference = E60EF6341A81A1F400C6364F /* rottentomatoes.app */;
+			productReference = E60EF6341A81A1F400C6364F /* Potato.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E60EF6481A81A1F500C6364F /* rottentomatoesTests */ = {
@@ -452,7 +452,7 @@
 				INFOPLIST_FILE = rottentomatoes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Potato;
 				SWIFT_OBJC_BRIDGING_HEADER = rottentomatoes/objc_bridging_header.h;
 			};
 			name = Debug;
@@ -466,7 +466,7 @@
 				INFOPLIST_FILE = rottentomatoes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Potato;
 				SWIFT_OBJC_BRIDGING_HEADER = rottentomatoes/objc_bridging_header.h;
 			};
 			name = Release;
