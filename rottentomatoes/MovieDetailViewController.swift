@@ -44,18 +44,30 @@ class MovieDetailViewController: UIViewController {
         descriptionView.addSubview(descriptionLabel)
         
         descriptionView.contentSize = CGSizeMake(windowWidth - 16, descriptionLabel.frame.size.height + 49)
-
-        let posterImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: windowWidth, height: windowHeight))
-        let posterURL = NSURL(string: movie["posters"]["profile"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))
-        posterImageView.setImageWithURL(posterURL)
         
+        
+        
+        
+        
+        let posterImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: windowWidth, height: windowHeight))
+        
+        let thumbnailURLRequest = NSURLRequest(URL: NSURL(string: movie["posters"]["profile"].stringValue)!)
+        let thumbnailHighResURLRequest = NSURLRequest(URL: NSURL(string: movie["posters"]["profile"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))!)
+        let placeholder = UIImage(named: "Image-Placeholder")
+        
+        posterImageView.setImageWithURLRequest(thumbnailURLRequest, placeholderImage: placeholder, success: { (_, _, image) -> Void in
+            posterImageView.setImageWithURLRequest(thumbnailHighResURLRequest, placeholderImage: image, success: { (_, _, image) -> Void in
+                posterImageView.alpha = 0.0;
+                posterImageView.image = image;
+                UIView.animateWithDuration(0.5, animations: {
+                    posterImageView.alpha = 1.0
+                })
+            }, failure: nil)
+        }, failure: nil)
+
         view.addSubview(posterImageView)
         view.addSubview(descriptionView)
         self.view = view
-
-
-    
-    
     }
 
     override func didReceiveMemoryWarning() {

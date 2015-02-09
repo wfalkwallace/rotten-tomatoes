@@ -12,7 +12,7 @@ import MRProgress
 import SwiftyJSON
 import UIKit
 
-class MovieListViewController: UIViewController, UITabBarDelegate {
+class MovieListViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var movies: Array<JSON>?
     var ApiKey: String?
@@ -22,6 +22,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
     var displayAsList = true
     
     @IBOutlet weak var movieListTableView: UITableView!
+    @IBOutlet weak var movieListCollectionView: UICollectionView!
     @IBOutlet weak var movieListTabBar: UITabBar!
     @IBOutlet weak var networkErrorBarView: UIView!
     @IBOutlet weak var displayMethodButton: UIBarButtonItem!
@@ -41,7 +42,18 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
 
     @IBAction func displayMethodChanged(sender: AnyObject) {
         displayAsList = !displayAsList
-        displayMethodButton.image = displayAsList ? UIImage(named: "Icon-GridView") : UIImage(named: "Icon-ListView")
+        if (displayAsList) {
+            movieListCollectionView.hidden = true
+            movieListTableView.hidden = false
+            displayMethodButton.image = UIImage(named: "Icon-GridView")
+            self.movieListTableView.reloadData()
+        }
+        else {
+            movieListTableView.hidden = true
+            movieListCollectionView.hidden = false
+            displayMethodButton.image = UIImage(named: "Icon-ListView")
+            self.movieListCollectionView.reloadData()
+        }
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
@@ -72,6 +84,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
                         let json = JSON(data)
                         self.movies = json["movies"].arrayValue
                         self.movieListTableView.reloadData()
+                        self.movieListCollectionView.reloadData()
                     }
                     else {
                         // something went wrong
@@ -97,7 +110,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MovieTableCell") as MovieListTableViewCell
-        cell.movieThumbnailImageView.image = nil;
+        cell.movieThumbnailImageView.image = nil
         
         if let movies = self.movies {
             // List Title
@@ -113,11 +126,20 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
             let synopsis = movies[indexPath.row]["synopsis"].stringValue
             cell.movieDescriptionLabel.text = synopsis
             cell.movieDescriptionLabel.numberOfLines = 0
+
+            let thumbnailURLRequest = NSURLRequest(URL: NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)!)
+            let thumbnailHighResURLRequest = NSURLRequest(URL: NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))!)
+            let placeholder = UIImage(named: "Image-Placeholder")
             
-            // List Thumbnail
-            let thumbnailURL = NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)
-            cell.movieThumbnailImageView.setImageWithURL(thumbnailURL)
-                
+            cell.movieThumbnailImageView.setImageWithURLRequest(thumbnailURLRequest, placeholderImage: placeholder, success: { (_, _, image) -> Void in
+                cell.movieThumbnailImageView.setImageWithURLRequest(thumbnailHighResURLRequest, placeholderImage: image, success: { (_, _, image) -> Void in
+                    cell.movieThumbnailImageView.alpha = 0.0;
+                    cell.movieThumbnailImageView.image = image;
+                    UIView.animateWithDuration(0.5, animations: {
+                        cell.movieThumbnailImageView.alpha = 1.0
+                    })
+                }, failure: nil)
+            }, failure: nil)
         }
         return cell
     }
@@ -130,5 +152,50 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
             self.navigationController?.pushViewController(detailView, animated: true)
         }
     }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let movies = self.movies {
+            return movies.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("com.falk-wallace.MovieGridCell", forIndexPath: indexPath) as MovieCollectionViewCell
+        cell.moviePosterImageView.image = nil
+        
+        if let movies = self.movies {
+            // List Title
+            let title = movies[indexPath.row]["title"].stringValue
+            cell.movieTitleLabel.text = title
 
+            // List Thumbnail
+            let thumbnailURLRequest = NSURLRequest(URL: NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue)!)
+            let thumbnailHighResURLRequest = NSURLRequest(URL: NSURL(string: movies[indexPath.row]["posters"]["thumbnail"].stringValue.stringByReplacingOccurrencesOfString("tmb", withString: "ori"))!)
+            let placeholder = UIImage(named: "Image-Placeholder")
+            
+            cell.moviePosterImageView.setImageWithURLRequest(thumbnailURLRequest, placeholderImage: placeholder, success: { (_, _, image) -> Void in
+                cell.moviePosterImageView.setImageWithURLRequest(thumbnailHighResURLRequest, placeholderImage: image, success: { (_, _, image) -> Void in
+                    cell.moviePosterImageView.alpha = 0.0;
+                    cell.moviePosterImageView.image = image;
+                    UIView.animateWithDuration(0.5, animations: {
+                        cell.moviePosterImageView.alpha = 1.0
+                    })
+                }, failure: nil)
+            }, failure: nil)
+        }
+        return cell
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let detailView = MovieDetailViewController()
+        if let movies = self.movies {
+            let movie = movies[indexPath.row]
+            detailView.movieData = movie.object
+            self.navigationController?.pushViewController(detailView, animated: true)
+        }
+    }
+    
 }
