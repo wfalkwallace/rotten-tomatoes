@@ -26,7 +26,7 @@
         <!--Movies-->
         <scene sceneID="SxC-iU-bRI">
             <objects>
-                <viewController title="Movies" id="OEE-AK-8bi" customClass="MovieListViewController" customModule="rottentomatoes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Movies" id="OEE-AK-8bi" customClass="MovieListViewController" customModule="Potato" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WcU-0O-mDo"/>
                         <viewControllerLayoutGuide type="bottom" id="u41-je-MFf"/>
@@ -40,7 +40,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.036265060260000002" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="com.falk-wallace.MovieTableCell" rowHeight="200" id="tpy-XX-U1T" customClass="MovieListTableViewCell" customModule="rottentomatoes" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="com.falk-wallace.MovieTableCell" rowHeight="200" id="tpy-XX-U1T" customClass="MovieListTableViewCell" customModule="Potato" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tpy-XX-U1T" id="U0E-Z6-VME">
                                             <autoresizingMask key="autoresizingMask"/>

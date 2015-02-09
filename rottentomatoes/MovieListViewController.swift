@@ -46,6 +46,7 @@ class MovieListViewController: UIViewController, UITabBarDelegate {
                         self.networkErrorBarView.hidden = false
                     }
                     else if let data = data {
+                        self.networkErrorBarView.hidden = true
                         let json = JSON(data)
                         self.movies = json["movies"].arrayValue
                         self.movieListTableView.reloadData()
